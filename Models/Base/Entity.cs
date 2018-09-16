@@ -8,6 +8,15 @@ using System.Text;
 namespace Models.Base {
    public class Entity : IEntity {
         /// <summary>
+        /// System ROOT folder ID constant.
+        /// </summary>
+        public static readonly Guid RootId;
+
+        static Entity() {
+            RootId = Guid.Parse("a5a5a5a5-b6b6-c7c7-d9d9-a12a12a12a12");
+        }
+
+        /// <summary>
         /// The Primary key of the table.
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
