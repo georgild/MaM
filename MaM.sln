@@ -7,29 +7,37 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{9E33DB93-0F5D-45E7-83A7-7C210C8004B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3F09365A-9DBD-45B0-AB0A-AF2CA8094623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{3F09365A-9DBD-45B0-AB0A-AF2CA8094623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryContracts", "RepositoryContracts\RepositoryContracts.csproj", "{5C46353E-2A11-4A1E-9E0E-9FB610A0FB5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryContracts", "RepositoryContracts\RepositoryContracts.csproj", "{5C46353E-2A11-4A1E-9E0E-9FB610A0FB5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{7368FF2B-2E06-4D5A-8D1D-7BC741C21A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{7368FF2B-2E06-4D5A-8D1D-7BC741C21A3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{010A53F9-BC93-4257-979F-461F97E62BDB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessServices", "BusinessServices", "{05B6ADFE-725A-4EFA-9D9F-6D555C1BB692}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessServicesImpl", "BusinessServicesImpl\BusinessServicesImpl.csproj", "{A3DDD593-65AF-439A-93D5-ED44C54B5190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessServicesImpl", "BusinessServicesImpl\BusinessServicesImpl.csproj", "{A3DDD593-65AF-439A-93D5-ED44C54B5190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessServicesContracts", "BusinessServicesContracts\BusinessServicesContracts.csproj", "{AA1D10B1-02E0-42EB-8748-2CE978C2C703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessServicesContracts", "BusinessServicesContracts\BusinessServicesContracts.csproj", "{AA1D10B1-02E0-42EB-8748-2CE978C2C703}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{1BA6DE01-FE36-41FE-AC80-54D21C15A6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomPolicyAuth", "CustomPolicyAuth\CustomPolicyAuth.csproj", "{C580EE6C-AD70-46FB-9D7B-E7791B597966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomPolicyAuth", "CustomPolicyAuth\CustomPolicyAuth.csproj", "{C580EE6C-AD70-46FB-9D7B-E7791B597966}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{D147169A-6BFE-4E7E-AD47-7E88EFA920E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{AF05A584-185C-4A6F-AF2E-F60CA0C654C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUtils", "CommonUtils\CommonUtils.csproj", "{989FD076-39E2-4769-BC30-18A8ADEEFD21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtils", "CommonUtils\CommonUtils.csproj", "{989FD076-39E2-4769-BC30-18A8ADEEFD21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{E91A288D-ED54-4022-B99C-CB05EB8E931B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiModels", "ApiModels\ApiModels.csproj", "{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{14E78D7D-370F-4A71-AD55-76A24AC3F6CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigUtils", "ConfigUtils\ConfigUtils.csproj", "{4907A43A-67EB-4EB0-8530-349A65C88D95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +77,14 @@ Global
 		{989FD076-39E2-4769-BC30-18A8ADEEFD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{989FD076-39E2-4769-BC30-18A8ADEEFD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{989FD076-39E2-4769-BC30-18A8ADEEFD21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4907A43A-67EB-4EB0-8530-349A65C88D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4907A43A-67EB-4EB0-8530-349A65C88D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4907A43A-67EB-4EB0-8530-349A65C88D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4907A43A-67EB-4EB0-8530-349A65C88D95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +100,9 @@ Global
 		{C580EE6C-AD70-46FB-9D7B-E7791B597966} = {1BA6DE01-FE36-41FE-AC80-54D21C15A6C1}
 		{AF05A584-185C-4A6F-AF2E-F60CA0C654C2} = {D147169A-6BFE-4E7E-AD47-7E88EFA920E6}
 		{989FD076-39E2-4769-BC30-18A8ADEEFD21} = {AF05A584-185C-4A6F-AF2E-F60CA0C654C2}
+		{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F} = {E91A288D-ED54-4022-B99C-CB05EB8E931B}
+		{14E78D7D-370F-4A71-AD55-76A24AC3F6CF} = {D147169A-6BFE-4E7E-AD47-7E88EFA920E6}
+		{4907A43A-67EB-4EB0-8530-349A65C88D95} = {14E78D7D-370F-4A71-AD55-76A24AC3F6CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F80FB861-DF4E-4406-8A86-CA59EE654019}
