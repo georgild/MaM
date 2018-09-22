@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RepositoryContracts.Repos.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +6,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Base;
+using RepositoryContracts.Base;
 
-namespace Repository.Repos.Base {
+namespace Repository.Base {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IBaseRecord {
 
         internal DbContext context;

@@ -1,7 +1,7 @@
 ﻿using Models.Base;
 using Repository.Contexts;
 using RepositoryContracts;
-using RepositoryContracts.Repos.Base;
+using RepositoryContracts.Base;
 using RepositoryContracts.UnitsOfWork;
 using System;
 using System.Collections.Generic;

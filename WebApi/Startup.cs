@@ -15,7 +15,6 @@ using Microsoft.EntityFrameworkCore;
 using RepositoryContracts.UnitsOfWork;
 using Repository.UnitsOfWork;
 using RepositoryContracts;
-using Repository.Repos;
 using Microsoft.AspNetCore.Authorization;
 using CustomPolicyAuth;
 using Models.Identity;
@@ -23,6 +22,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Repository.Base;
+using Repository.Identity;
+using RepositoryContracts.Identity;
+using RepositoryContracts.Base;
 
 namespace WebApi {
     public class Startup {

@@ -1,12 +1,11 @@
 ﻿using Models.Base;
-using RepositoryContracts.Repos.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RepositoryContracts {
+namespace RepositoryContracts.Base {
     public interface IEntityAncestorRepository : IGenericRepository<EntityAncestor> {
         /// <summary>
         /// READ WHY THIS ONE IS NEEDED: 

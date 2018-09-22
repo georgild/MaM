@@ -1,10 +1,10 @@
-﻿using RepositoryContracts.Repos.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Models.Identity;
+using RepositoryContracts.Base;
 
-namespace RepositoryContracts {
+namespace RepositoryContracts.Identity {
     public interface ITokenRepository : IGenericRepository<RefreshToken> {
     }
 }

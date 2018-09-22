@@ -1,11 +1,11 @@
 ﻿using Models.Base;
-using RepositoryContracts.Repos.Base;
+using RepositoryContracts.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repos.Base {
+namespace Repository.Base {
     public static class GenericRepositoryExtensions {
         // IMPORTANT: These methods should not be included and/or used in a UnitOfWork class, because they
         // call SaveChanges() on their own and can not be chained together with others in a transaction.

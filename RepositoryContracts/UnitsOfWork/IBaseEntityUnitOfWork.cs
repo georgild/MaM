@@ -1,5 +1,5 @@
 ﻿using Models.Base;
-using RepositoryContracts.Repos.Base;
+using RepositoryContracts.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoryContracts.Repos.Base {
+namespace RepositoryContracts.Base {
     public interface IGenericRepository<TEntity> {
         /// <summary>
         /// Example: persistence.AggregateAsync(p => true, p => p.Id, g => g.Sum(x => x.ExampleValue));

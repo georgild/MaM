@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Repository.Contexts {
-    public class Context : IdentityDbContext
+    public class Context // : DbContext
+        : IdentityDbContext
     <User,
         Role,
         Guid,
@@ -16,14 +17,14 @@ namespace Repository.Contexts {
         CustomIdentityUserRole,
         CustomIdentityUserLogin,
         CustomIdentityRoleClaim,
-        CustomIdentityUserToken> {
+        CustomIdentityUserToken> 
+    {
         public Context(DbContextOptions<Context> options)
             : base(options) {
         }
 
-        /// <summary>
-        /// The DbSet for the RefreshTokens table.
-        /// </summary>
+        public DbSet<Organization> Organizations { get; set; }
+
         public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

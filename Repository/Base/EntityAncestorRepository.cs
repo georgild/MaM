@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models.Base;
 using Repository.Contexts;
-using Repository.Repos.Base;
 using RepositoryContracts;
+using RepositoryContracts.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repos {
+namespace Repository.Base {
     public class EntityAncestorRepository : GenericRepository<EntityAncestor>, IEntityAncestorRepository {
         public EntityAncestorRepository(Context context)
              : base(context) { }

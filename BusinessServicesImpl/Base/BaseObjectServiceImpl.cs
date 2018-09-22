@@ -1,8 +1,8 @@
 ﻿using BusinessServicesContracts.Base;
 using CustomPolicyAuth;
 using Models.Base;
-using Repository.Repos.Base;
-using RepositoryContracts.Repos.Base;
+using Repository.Base;
+using RepositoryContracts.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
