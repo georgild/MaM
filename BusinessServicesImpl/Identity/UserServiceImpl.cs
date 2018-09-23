@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BusinessServicesImpl.Identity {
-    public class OrganizationServiceImpl : BaseEntityServiceImpl<Organization>, IOrganizationService {
+    public class UserServiceImpl : BaseEntityServiceImpl<User>, IUserService {
 
-        public OrganizationServiceImpl(
-                IBaseEntityUnitOfWork<Organization> unitOfWork)
+        public UserServiceImpl(
+                IBaseEntityUnitOfWork<User> unitOfWork)
             : base(unitOfWork) {
         }
     }

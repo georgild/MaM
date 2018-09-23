@@ -39,12 +39,12 @@ namespace WebApi {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContextPool<Context>(options => options.UseInMemoryDatabase());
-            //.UseMySql(
-            //         ConfigUtils.ConfigurationProvider
-            //        .GetDefaultConfig()
-            //        .GetValue<string>("ConnectionStrings.KAuditDatabase")
-            //    ), 128);
+            services.AddDbContextPool<Context>(options => options//.UseInMemoryDatabase());
+            .UseMySql(
+                     ConfigUtils.ConfigurationProvider
+                    .GetDefaultConfig()
+                    .GetSection("ConnectionStrings").GetValue<string>("MainDB")
+                ), 128);
 
             services.AddTransient<IIdentityUnitOfWork, IdentityUnitOfWork>();
             services.AddTransient<IEntityAncestorRepository, EntityAncestorRepository>();

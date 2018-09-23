@@ -19,7 +19,7 @@ using CustomPolicyAuth;
 using RepositoryContracts.UnitsOfWork;
 using ApiModels.Identity;
 
-namespace WebApiServices.IdentityServiceCore.Controllers {
+namespace WebApi.Controllers {
 
     [Authorize]
     [Produces("application/json")]

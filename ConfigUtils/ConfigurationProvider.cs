@@ -12,8 +12,8 @@ namespace ConfigUtils {
         static ConfigurationProvider() {
 
             IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+                //.SetBasePath(@"D:\University\Дипломна работа\src\project\MaM\WebApi")
+                .AddJsonFile(@"D:\University\Дипломна работа\src\project\MaM\WebApi\appsettings.json");
 
             configuration = builder.Build();
         }

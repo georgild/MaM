@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Models.Identity {
-    public class User : IdentityUser<Guid>, IActor {
+    public class User : Entity, IActor {
         public User() {
             this.Id = new Guid();
         }
@@ -22,11 +23,14 @@ namespace Models.Identity {
         [Required]
         public bool Active { get; set; }
 
-        /// <summary>
-        /// Whether or not is deleted by admin.
-        /// </summary>
         [Required]
-        public bool Deleted { get; set; }
+        public string Email { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
 
         /// <summary>
         /// Navigation property to the refresh token.
