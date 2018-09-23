@@ -14,7 +14,7 @@ namespace BusinessServicesImpl.Base {
     public abstract class BaseEntityServiceImpl<TEntity> : BaseObjectServiceImpl<TEntity>, IBaseEntityService<TEntity>
         where TEntity : Entity {
 
-        private readonly IBaseEntityUnitOfWork<TEntity> _unitOfWork;
+        protected readonly IBaseEntityUnitOfWork<TEntity> _unitOfWork;
 
         public BaseEntityServiceImpl(
                 IBaseEntityUnitOfWork<TEntity> unitOfWork)
@@ -50,7 +50,7 @@ namespace BusinessServicesImpl.Base {
         /// inserts them (WITHOUT PERSISTENCE) in the ancestors repo.
         /// </summary>
         /// <param name="child"></param>
-        private async Task InsertAncestors(IEntity child, Guid parentId) {
+        protected async Task InsertAncestors(IEntity child, Guid parentId) {
 
             IEnumerable<EntityAncestor> parentAncestors = await _unitOfWork.EntityAncestorRepository.FindAsync(
                 anc => anc.EntityId.Equals(parentId),

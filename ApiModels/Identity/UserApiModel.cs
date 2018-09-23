@@ -1,11 +1,10 @@
-﻿using System;
+﻿using ApiModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ApiModels.Identity {
-    public class UserApiModel {
-
-        public Guid Id { get; set; }
+    public class UserApiModel : BaseEntityApiModel {
 
         /// <summary>
         /// The Address of the user.
@@ -16,11 +15,6 @@ namespace ApiModels.Identity {
         /// Can be activated/deactivated.
         /// </summary>
         public bool Active { get; set; }
-
-        /// <summary>
-        /// Whether or not is deleted by admin.
-        /// </summary>
-        public bool Deleted { get; set; }
 
         /// <summary>
         /// Whether or not the user has confirmed
