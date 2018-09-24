@@ -1,4 +1,6 @@
-﻿using BusinessServicesContracts.Identity;
+﻿using AutoMapper;
+using BizModels.Identity;
+using BusinessServicesContracts.Identity;
 using BusinessServicesContracts.VFileSystem;
 using BusinessServicesImpl.Base;
 using CustomPolicyAuth;
@@ -12,13 +14,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessServicesImpl.Identity {
-    public class OrganizationServiceImpl : BaseEntityServiceImpl<Organization>, IOrganizationService {
+    public class OrganizationServiceImpl : BaseEntityServiceImpl<Organization, OrganizationBizModel>, IOrganizationService {
 
         private readonly IOrganizationUnitOfWork organizationUnitOfWork;
 
         public OrganizationServiceImpl(
-                IOrganizationUnitOfWork unitOfWork)
-                : base(unitOfWork) {
+                IOrganizationUnitOfWork unitOfWork,
+                IMapper mapper)
+                : base(unitOfWork, mapper) 
+        {
 
             organizationUnitOfWork = unitOfWork;
         }

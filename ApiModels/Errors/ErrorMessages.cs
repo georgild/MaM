@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Errors {
+namespace BizModels.Errors {
     public class ErrorMessages {
         private readonly Dictionary<EErrorCodes, string> errorCodes = new Dictionary<EErrorCodes, string>();
 

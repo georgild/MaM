@@ -1,10 +1,10 @@
-﻿using ApiModels.Base;
+﻿using BizModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Identity {
-    public class UserApiModel : BaseEntityApiModel {
+namespace BizModels.Identity {
+    public class UserBizModel : BaseEntityBizModel {
 
         /// <summary>
         /// The Address of the user.

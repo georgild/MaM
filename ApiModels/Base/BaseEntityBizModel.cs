@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Base {
-    public class BaseEntityApiModel : BaseApiModel {
+namespace BizModels.Base {
+    public class BaseEntityBizModel : BaseBizModel {
 
         public Guid CreatedBy { get; set; }
 

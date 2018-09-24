@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Base {
-    public abstract class BaseApiModel {
+namespace BizModels.Base {
+    public abstract class BaseBizModel {
         public Guid Id { get; set; }
     }
 }

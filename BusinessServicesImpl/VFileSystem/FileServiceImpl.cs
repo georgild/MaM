@@ -1,4 +1,6 @@
-﻿using BusinessServicesContracts.VFileSystem;
+﻿using AutoMapper;
+using BizModels.VFileSystem;
+using BusinessServicesContracts.VFileSystem;
 using BusinessServicesImpl.Base;
 using Models.VFileSystem;
 using RepositoryContracts.UnitsOfWork;
@@ -7,11 +9,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BusinessServicesImpl.VFileSystem {
-    public class FileServiceImpl : BaseEntityServiceImpl<VFileSystemItem>, IFileService {
+    public class FileServiceImpl : BaseEntityServiceImpl<VFileSystemItem, FileBizModel>, IFileService {
 
         public FileServiceImpl(
-                IBaseEntityUnitOfWork<VFileSystemItem> unitOfWork)
-            : base(unitOfWork) {
+                IBaseEntityUnitOfWork<VFileSystemItem> unitOfWork,
+                IMapper mapper)
+                : base(unitOfWork, mapper) {
         }
     }
 }

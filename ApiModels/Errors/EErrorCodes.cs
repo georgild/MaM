@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Errors {
+namespace BizModels.Errors {
     public enum EErrorCodes {
         InvalidModelStateErrorCode = 1,
         GeneralUnknownErrorCode = 2,

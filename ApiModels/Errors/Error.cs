@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Errors {
+namespace BizModels.Errors {
     public class Error {
         public Error(int code, string description) {
             this.Code = code;

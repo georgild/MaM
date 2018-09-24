@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 using Models.Identity;
 using CustomPolicyAuth;
 using RepositoryContracts.UnitsOfWork;
-using ApiModels.Identity;
+using BizModels.Identity;
 
 namespace WebApi.Controllers {
 

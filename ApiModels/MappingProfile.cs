@@ -1,5 +1,5 @@
-﻿using ApiModels.Identity;
-using ApiModels.VFileSystem;
+﻿using BizModels.Identity;
+using BizModels.VFileSystem;
 using AutoMapper;
 using Models.Identity;
 using Models.VFileSystem;
@@ -11,11 +11,11 @@ namespace ApiModels {
     public class MappingProfile : Profile {
         public MappingProfile() {
 
-            CreateMap<UserApiModel, User>();
-            CreateMap<User, UserApiModel>();
+            CreateMap<UserBizModel, User>();
+            CreateMap<User, UserBizModel>();
 
-            CreateMap<RoleApiModel, Role>();
-            CreateMap<Role, RoleApiModel>();
+            CreateMap<RoleBizModel, Role>();
+            CreateMap<Role, RoleBizModel>();
         }
     }
 }

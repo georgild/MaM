@@ -1,4 +1,6 @@
-﻿using BusinessServicesContracts.Base;
+﻿using AutoMapper;
+using BizModels.Base;
+using BusinessServicesContracts.Base;
 using CommonUtils;
 using CustomPolicyAuth;
 using Models.Base;
@@ -11,16 +13,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessServicesImpl.Base {
-    public abstract class BaseEntityServiceImpl<TEntity> : BaseObjectServiceImpl<TEntity>, IBaseEntityService<TEntity>
-        where TEntity : Entity {
+    public abstract class BaseEntityServiceImpl<TEntity, TBizModel> : BaseObjectServiceImpl<TEntity>, IBaseEntityService<TEntity, TBizModel>
+        where TEntity : Entity
+        where TBizModel : BaseEntityBizModel {
 
         protected readonly IBaseEntityUnitOfWork<TEntity> _unitOfWork;
 
+        private readonly IMapper _mapper;
+
         public BaseEntityServiceImpl(
-                IBaseEntityUnitOfWork<TEntity> unitOfWork)
-            : base(unitOfWork.EntityResourceRepository) {
+                IBaseEntityUnitOfWork<TEntity> unitOfWork,
+                IMapper mapper)
+            : base(unitOfWork.EntityResourceRepository) 
+        {
 
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public virtual async Task<Guid> Create(ContextPrincipal principal, TEntity entity, Guid parentId) {
@@ -43,6 +51,39 @@ namespace BusinessServicesImpl.Base {
             }
 
             return entity.Id;
+        }
+
+        public virtual async Task<TBizModel> GetAsBiz(ContextPrincipal principal, Guid resourceId) {
+            TEntity dbObject = await this.Get(principal, resourceId);
+
+            return _mapper.Map<TBizModel>(dbObject);
+        }
+
+        public async Task<IEnumerable<Guid>> GetDirectChildrenAsGuids(ContextPrincipal principal, Guid parentId, int start, int limit) {
+
+            List<Guid> result = new List<Guid>();
+
+            int parentRank = (await _unitOfWork.EntityAncestorRepository.FindProjectionAsync(
+                anc => anc.EntityId == parentId && anc.AncestorId.Value == parentId,
+                pr => pr.Rank,
+                o => o.OrderBy(u => u.AncestorId),
+                0,
+                1)).FirstOrDefault();
+
+            IEnumerable<EntityAncestor> children = await _unitOfWork.EntityAncestorRepository.FindWithInclude<EntityAncestor>(
+                ancLeft => ancLeft.AncestorId.Value == parentId, // all who have the parent in their path...
+                ancLeft => ancLeft.EntityId,
+                ancRight => ancRight.AncestorId.Value,
+                ancRight => ancRight.EntityId == ancRight.AncestorId && ancRight.Rank == parentRank + 1,
+                null,
+                start,
+                limit); // ...and their rank is parentRank + 1
+
+            if (!children.Any()) {
+                return result;
+            }
+
+            return children.Select(x => x.EntityId);
         }
 
         /// <summary>
@@ -90,6 +131,19 @@ namespace BusinessServicesImpl.Base {
             expression = expression.And(ent => !ent.Deleted);
 
             return await base.Find(principal, expression, start, limit);
+        }
+
+        public virtual async Task<IEnumerable<TBizModel>> FindAsBiz(
+                ContextPrincipal principal,
+                Expression<Func<TEntity, bool>> expression,
+                int start,
+                int limit) {
+
+
+            IEnumerable<TEntity> dbObjects = await this.Find(principal, org => true, start, limit);
+            IEnumerable<TBizModel> bizModels = _mapper.Map<IEnumerable<TEntity>, IEnumerable<TBizModel>>(dbObjects);
+
+            return bizModels;
         }
 
         public virtual async Task<bool> SoftDelete(ContextPrincipal principal, Guid resourceId) {

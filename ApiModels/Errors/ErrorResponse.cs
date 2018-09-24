@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace ApiModels.Errors {
+namespace BizModels.Errors {
     public class ErrorResponse {
 
         private readonly ErrorMessages messages = new ErrorMessages();

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModels.Identity {
+namespace BizModels.Identity {
     public class TokenResponse {
 
         [JsonProperty("access_token")]

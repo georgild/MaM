@@ -33,11 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtils", "CommonUtils\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{E91A288D-ED54-4022-B99C-CB05EB8E931B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiModels", "ApiModels\ApiModels.csproj", "{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizModels", "ApiModels\BizModels.csproj", "{1F23E413-F8D2-4DB3-96E2-4F49C7615C4F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{14E78D7D-370F-4A71-AD55-76A24AC3F6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigUtils", "ConfigUtils\ConfigUtils.csproj", "{4907A43A-67EB-4EB0-8530-349A65C88D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigUtils", "ConfigUtils\ConfigUtils.csproj", "{4907A43A-67EB-4EB0-8530-349A65C88D95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
