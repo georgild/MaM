@@ -1,4 +1,5 @@
 ﻿using BizModels.Base;
+using Models.Tasks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,5 +15,11 @@ namespace BizModels.Tasks {
 
         [Required]
         public DateTime StartedAt { get; set; }
+
+        [Required]
+        public ETaskState State { get; set; }
+
+        [Required]
+        public ETaskType Type { get; set; }
     }
 }

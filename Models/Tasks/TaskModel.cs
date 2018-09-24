@@ -16,6 +16,9 @@ namespace Models.Tasks {
         public DateTime StartedAt { get; set; }
 
         [Required]
+        public ETaskState State { get; set; }
+
+        [Required]
         public ETaskType Type { get; set; }
     }
 }
