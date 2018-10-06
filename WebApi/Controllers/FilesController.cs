@@ -41,8 +41,8 @@ namespace WebApi.Controllers
             _principal = new ContextPrincipal(HttpContext.User);
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> GetById(Guid id) {
+        [HttpGet("{id}", Name = "GetFileById")]
+        public async Task<IActionResult> GetFileById(Guid id) {
 
             if (id.Equals(Guid.Empty)) {
                 return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralGetErrorCode, "Invalid Id."));
@@ -106,7 +106,7 @@ namespace WebApi.Controllers
             value.Id = await _fileService.Create(_principal,
                     _mapper.Map<VFileSystemItem>(value), id);
 
-            return CreatedAtAction(nameof(GetById), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
         }
     }
 }

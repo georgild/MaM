@@ -45,8 +45,8 @@ namespace WebApi.Controllers
             return Ok(bizModels);
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> GetById(Guid id) {
+        [HttpGet("{id}", Name = "GetOrganizationById")]
+        public async Task<IActionResult> GetOrganizationById(Guid id) {
 
             if (id.Equals(Guid.Empty)) {
                 return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralGetErrorCode, "Invalid Id."));
@@ -68,7 +68,7 @@ namespace WebApi.Controllers
             value.Id = await _organizationService.Create(_principal,
                     _mapper.Map<Organization>(value));
 
-            return CreatedAtAction(nameof(GetById), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(GetOrganizationById), new { id = value.Id }, value);
         }
 
         [HttpPut("{id}")]
@@ -105,7 +105,7 @@ namespace WebApi.Controllers
             value.Id = await _userService.Create(_principal,
                     _mapper.Map<User>(value), id);
 
-            return CreatedAtAction(nameof(GetById), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(GetOrganizationById), new { id = value.Id }, value);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 namespace MetadataExtractor.Implementations {
-    public class XmpReader : IMetadataExtractor, IDisposable {
+    public class XmpReader : IDisposable {
 
         private const string _xmpLibPath = "XmpReader.dll";
 

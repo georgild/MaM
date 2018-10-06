@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Orleans.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Actors\Actors.csproj" />
     <ProjectReference Include="..\ApiModels\BizModels.csproj" />
     <ProjectReference Include="..\BusinessServicesContracts\BusinessServicesContracts.csproj" />
     <ProjectReference Include="..\ConfigUtils\ConfigUtils.csproj" />

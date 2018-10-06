@@ -26,6 +26,8 @@ using Repository.Base;
 using Repository.Identity;
 using RepositoryContracts.Identity;
 using RepositoryContracts.Base;
+using Orleans;
+using Orleans.Runtime;
 
 namespace WebApi {
     public class Startup {
@@ -59,26 +61,26 @@ namespace WebApi {
 
             services.AddTransient<IAuthorizationHandler, AuthHandler>();
 
-            services.AddIdentity<User, Role>(options => {
-                //TODO: Retrieve these values from config
-                options.User.RequireUniqueEmail = true;
+            //services.AddIdentity<User, Role>(options => {
+            //    //TODO: Retrieve these values from config
+            //    options.User.RequireUniqueEmail = true;
 
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 1;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequiredLength = 1;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequireLowercase = false;
 
-                options.SignIn.RequireConfirmedEmail = true;
+            //    options.SignIn.RequireConfirmedEmail = true;
 
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                options.Lockout.MaxFailedAccessAttempts = 10;
-                options.Lockout.AllowedForNewUsers = true;
+            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+            //    options.Lockout.MaxFailedAccessAttempts = 10;
+            //    options.Lockout.AllowedForNewUsers = true;
 
-                options.User.RequireUniqueEmail = true;
-            })
-            .AddEntityFrameworkStores<Context>()
-            .AddDefaultTokenProviders();
+            //    options.User.RequireUniqueEmail = true;
+            //})
+            //.AddEntityFrameworkStores<Context>()
+            //.AddDefaultTokenProviders();
 
             services
                 .AddAuthentication(options => {
@@ -111,6 +113,40 @@ namespace WebApi {
             });
 
             services.AddMvc();
+
+            services.AddSingleton<IClusterClient>(p => {
+
+                // TODO Make this configurable.
+                int initializeAttemptsBeforeFailing = 5;
+
+                int attempt = 0;
+                IClusterClient client;
+                while (true) {
+                    try {
+                        // Note: Normally the client configuration would not be that simple.
+                        client = new ClientBuilder()
+                        .UseLocalhostClustering().Build();
+
+                        client.Connect().Wait();
+                        Console.WriteLine("Client successfully connect to silo host ...");
+                        break;
+                    }
+                    catch (SiloUnavailableException) {
+                        attempt++;
+                        Console.WriteLine(
+                            @"Attempt {0} of {1} has FAILED to initialize the Orleans client!",
+                            attempt, initializeAttemptsBeforeFailing);
+                        if (attempt > initializeAttemptsBeforeFailing) {
+                            throw;
+                        }
+                        // TODO This dummy delay might not be required.
+                        //      Previously immediate retries were failing, but that might not be the case anymore.
+                        Task.Delay(TimeSpan.FromSeconds(4));
+                    }
+                }
+
+                return client;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

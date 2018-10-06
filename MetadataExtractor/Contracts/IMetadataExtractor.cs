@@ -5,6 +5,6 @@ using System.Text;
 namespace MetadataExtractor.Contracts {
     public interface IMetadataExtractor {
 
-        Dictionary<string, string> DumpFlat();
+        Dictionary<string, string> DumpFlat(string fileLocation);
     }
 }

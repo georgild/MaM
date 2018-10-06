@@ -47,9 +47,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transcoding", "Transcoding"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ingesting", "Ingesting", "{E4913C63-CB62-4579-8FC2-ED36852A14AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transcoder", "Transcoder\Transcoder.csproj", "{19DA2256-BE55-4631-87A0-E6F2E7C8F8F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transcoder", "Transcoder\Transcoder.csproj", "{19DA2256-BE55-4631-87A0-E6F2E7C8F8F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataExtractor", "MetadataExtractor\MetadataExtractor.csproj", "{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataExtractor", "MetadataExtractor\MetadataExtractor.csproj", "{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{B5C45B09-923B-433D-B681-2D96BE921124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actors", "Actors\Actors.csproj", "{F45018F2-7C9E-415D-9772-E487ED0A3485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +109,14 @@ Global
 		{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C45B09-923B-433D-B681-2D96BE921124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C45B09-923B-433D-B681-2D96BE921124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C45B09-923B-433D-B681-2D96BE921124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C45B09-923B-433D-B681-2D96BE921124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F45018F2-7C9E-415D-9772-E487ED0A3485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F45018F2-7C9E-415D-9772-E487ED0A3485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F45018F2-7C9E-415D-9772-E487ED0A3485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F45018F2-7C9E-415D-9772-E487ED0A3485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +140,7 @@ Global
 		{E4913C63-CB62-4579-8FC2-ED36852A14AB} = {B607C103-1561-41D5-8B1F-618BB37AD2DD}
 		{19DA2256-BE55-4631-87A0-E6F2E7C8F8F3} = {85A0BA25-84D1-4B2B-9242-C7C53B386AFB}
 		{51BB627F-59F2-4CFE-AEFF-FCD285C5B0A2} = {BCC1809C-5D35-4EF0-9568-B85513FD37E5}
+		{F45018F2-7C9E-415D-9772-E487ED0A3485} = {B607C103-1561-41D5-8B1F-618BB37AD2DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F80FB861-DF4E-4406-8A86-CA59EE654019}

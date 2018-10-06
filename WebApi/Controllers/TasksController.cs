@@ -38,8 +38,8 @@ namespace WebApi.Controllers
             _principal = new ContextPrincipal(HttpContext.User);
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> GetById(Guid id) {
+        [HttpGet("{id}", Name = "GetTaskById")]
+        public async Task<IActionResult> GetTaskById(Guid id) {
 
             if (id.Equals(Guid.Empty)) {
                 return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralGetErrorCode, "Invalid Id."));

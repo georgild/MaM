@@ -39,8 +39,8 @@ namespace WebApi.Controllers
             _principal = new ContextPrincipal(HttpContext.User);
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> GetById(Guid id) {
+        [HttpGet("{id}", Name = "GetFolderById")]
+        public async Task<IActionResult> GetFolderById(Guid id) {
 
             if (id.Equals(Guid.Empty)) {
                 return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralGetErrorCode, "Invalid Id."));
@@ -104,7 +104,7 @@ namespace WebApi.Controllers
             value.Id = await _folderService.Create(_principal,
                     _mapper.Map<VFileSystemItem>(value), id);
 
-            return CreatedAtAction(nameof(GetById), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(GetFolderById), new { id = value.Id }, value);
         }
 
         [HttpGet("{id}/assets")]
@@ -130,7 +130,7 @@ namespace WebApi.Controllers
             value.Id = await _assetService.Create(_principal,
                     _mapper.Map<VFileSystemItem>(value), id);
 
-            return CreatedAtAction(nameof(GetById), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(GetFolderById), new { id = value.Id }, value);
         }
     }
 }
