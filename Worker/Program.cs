@@ -27,7 +27,7 @@ namespace WorkerServices.SiloServerGeneral {
             // Register sigint event handler
             Console.CancelKeyPress += CancelHandler;
 
-            Console.Title = @"Poisson Silo Server";
+            Console.Title = @"Worker Silo";
 
             return MainInternal(args).Result;
         }
@@ -48,7 +48,9 @@ namespace WorkerServices.SiloServerGeneral {
             try {
                 // Server will be able to load any referenced (as a project) Grain automatically.
                 // If it does not, then most likely some Orleans package is missing.
+                Console.WriteLine("Starting worker silo...");
                 ISiloHost siloHost = await StartSilo();
+                Console.WriteLine("Worker Silo started and waiting for tasks!");
 
                 _exitEvent.WaitOne();
 
@@ -61,13 +63,15 @@ namespace WorkerServices.SiloServerGeneral {
                     // When the cancelation token fires the silo is expected to exit ungracefully.
                     await siloHost.StopAsync(exit.Token);
                 }
-                catch (Exception e) {
+                catch (Exception exc) {
+                    Console.WriteLine(exc.Message);
                     result = -1;
                 }
 
 
             }
-            catch (Exception e) {
+            catch (Exception exc) {
+                Console.WriteLine(exc.Message);
                 result = -1;
             }
 

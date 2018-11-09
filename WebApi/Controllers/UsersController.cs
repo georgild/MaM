@@ -42,11 +42,33 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value) {
+        public async Task<IActionResult> Put(Guid id, [FromBody] UserBizModel value) {
+
+            if (!ModelState.IsValid) {
+                return BadRequest(new ErrorResponse()
+                    .AddModelStateErrors(ModelState));
+            }
+
+            bool success = await _userService.Update(_principal, _mapper.Map<User>(value), id);
+
+            if (!success) {
+                return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralUpdateErrorCode,
+                    "Update didn't affect any items."));
+            }
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id) {
+        public async Task<IActionResult> Delete(Guid id) {
+
+            if (id.Equals(Guid.Empty)) {
+                return BadRequest(new ErrorResponse().AddError(EErrorCodes.GeneralDeleteErrorCode, "Invalid Id."));
+            }
+
+            await _userService.SoftDelete(_principal, id);
+
+            return NoContent();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 namespace MetadataExtractor.Implementations {
     public class XmpReader : IDisposable {
 
-        private const string _xmpLibPath = "XmpReader.dll";
+        private const string _xmpLibPath = @".\ThirdParty\XmpReader.dll";
 
         private IntPtr _xmpMetaHandle = IntPtr.Zero;
 

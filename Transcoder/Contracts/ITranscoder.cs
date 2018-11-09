@@ -14,7 +14,7 @@ namespace Transcoder.Contracts {
 
         Task<Stream> ExtractImage(string source, uint width, uint height, CancellationToken cancellationToken);
 
-        Task<bool> Transcode(string source, string destination, string format, CancellationToken cancellationToken);
+        bool Transcode(string source, string destination, string format);
 
 
     }
