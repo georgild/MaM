@@ -26,8 +26,22 @@ using Repository.Base;
 using Repository.Identity;
 using RepositoryContracts.Identity;
 using RepositoryContracts.Base;
+using Repository.UnitsOfWork;
 using Orleans;
 using Orleans.Runtime;
+using BusinessServicesContracts.Tasks;
+using BusinessServicesImpl.Tasks;
+using BusinessServicesContracts.VFileSystem;
+using BusinessServicesImpl.VFileSystem;
+using Models.VFileSystem;
+using RepositoryContracts.VFileSystem;
+using Repository.VFileSystem;
+using Models.Tasks;
+using ApiModels;
+using System.Reflection;
+using AutoMapper;
+using RepositoryContracts.Tasks;
+using Repository.Tasks;
 
 namespace WebApi {
     public class Startup {
@@ -49,9 +63,21 @@ namespace WebApi {
                 ), 128);
 
             services.AddTransient<IIdentityUnitOfWork, IdentityUnitOfWork>();
+            services.AddTransient<ITaskUnitOfWork, TaskUnitOfWork>();
+            services.AddTransient<IVFileSystemUnitOfWork, VFileSystemUnitOfWork>();
+
             services.AddTransient<IEntityAncestorRepository, EntityAncestorRepository>();
             services.AddTransient<ITokenRepository, TokenRepository>();
+            services.AddTransient<IVFileSystemItemRepository, VFileSystemItemRepository>();
+            services.AddTransient<ITaskRepository, TaskRepository>();
 
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
+
+            //services.AddTransient<IBaseEntityUnitOfWork<TaskModel>, BaseEntityUnitOfWork<TaskModel>()();
+
+            services.AddTransient<ITaskService, TaskServiceImpl>();
+
+            services.AddTransient<IFileService, FileServiceImpl>();
 
             //services.AddTransient<IValidator, Validator>();
             //services.AddTransient<IMailUtility, MailUtility>();

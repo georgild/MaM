@@ -16,6 +16,6 @@ namespace Transcoder.Contracts {
 
         bool Transcode(string source, string destination, string format);
 
-
+        string QualityCheck(string source);
     }
 }

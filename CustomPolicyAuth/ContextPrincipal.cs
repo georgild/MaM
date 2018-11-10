@@ -8,6 +8,8 @@ using System.Text;
 
 namespace CustomPolicyAuth {
     public class ContextPrincipal : ClaimsPrincipal {
+        public ContextPrincipal() {
+        }
 
         public ContextPrincipal(IPrincipal principal) : base(principal) {
 

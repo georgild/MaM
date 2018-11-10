@@ -15,6 +15,12 @@ using BizModels.VFileSystem;
 using Models.VFileSystem;
 using BusinessServicesContracts.Tasks;
 using BizModels.Tasks;
+using Models.Tasks;
+using Orleans;
+using Actors;
+using System.IO;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApi.Controllers
 {
@@ -26,19 +32,31 @@ namespace WebApi.Controllers
 
         private readonly IFileService _fileService;
 
+        private readonly IClusterClient _orleansClient;
+
         private readonly IMapper _mapper;
 
         private readonly ContextPrincipal _principal;
 
+        private readonly List<VFileSystemItem> _mockData = new List<VFileSystemItem> {
+            new VFileSystemItem {
+                Id = Guid.Parse("0ce860a4-1b84-4910-957d-764e7ea80956"),
+                Location = @"D:\Pics\VIDEO0002.mp4",
+                Title = "File 1"
+            }
+        };
+
         public FilesController(
             ITaskService taskService,
             IFileService fileService, 
-            IMapper mapper
+            IMapper mapper,
+            IClusterClient orleansClient
         ) {
             _taskService = taskService;
             _fileService = fileService;
             _mapper = mapper;
-            _principal = new ContextPrincipal(HttpContext.User);
+            _orleansClient = orleansClient;
+            _principal = new ContextPrincipal();
         }
 
         [HttpGet("{id}", Name = "GetFileById")]
@@ -96,15 +114,25 @@ namespace WebApi.Controllers
             return Ok(bizModels);
         }
 
-        [HttpPost("{id}/tasks")]
-        public async Task<IActionResult> Post(Guid id, [FromBody] FileBizModel value) {
+        [HttpPost("{id}/transcodertasks")]
+        public async Task<IActionResult> Post(Guid id, [FromBody] TranscoderTaskBizModel value) {
             if (!ModelState.IsValid) {
                 return BadRequest(new ErrorResponse()
                     .AddModelStateErrors(ModelState));
             }
 
-            value.Id = await _fileService.Create(_principal,
-                    _mapper.Map<VFileSystemItem>(value), id);
+            VFileSystemItem file =  await _fileService.Get(_principal, id); // _mockData[0];//
+            string location = ConfigUtils.ConfigurationProvider
+                    .GetDefaultConfig()
+                    .GetSection("Storage").GetValue<string>("TranscoderLocation");
+            //value.Id = await _taskService.Create(_principal,
+            //        _mapper.Map<TaskModel>(value), id);
+
+            ITasksProcessorActor tasksProcessor = _orleansClient.GetGrain<ITasksProcessorActor>(Guid.Empty);
+
+            string transcoded = Path.Combine(location, file.Id.ToString());
+
+            bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
 
             return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
         }

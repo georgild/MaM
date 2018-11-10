@@ -12,7 +12,7 @@ namespace BusinessServicesImpl.VFileSystem {
     public class AssetServiceImpl : BaseEntityServiceImpl<VFileSystemItem, AssetBizModel>, IAssetService {
 
         public AssetServiceImpl(
-                IBaseEntityUnitOfWork<VFileSystemItem> unitOfWork,
+                IVFileSystemUnitOfWork unitOfWork,
                 IMapper mapper)
                 : base(unitOfWork, mapper) {
         }

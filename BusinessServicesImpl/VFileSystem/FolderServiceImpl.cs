@@ -12,7 +12,7 @@ namespace BusinessServicesImpl.VFileSystem {
     public class FolderServiceImpl : BaseEntityServiceImpl<VFileSystemItem, FolderBizModel>, IFolderService {
 
         public FolderServiceImpl(
-                IBaseEntityUnitOfWork<VFileSystemItem> unitOfWork,
+                IVFileSystemUnitOfWork unitOfWork,
                 IMapper mapper)
                 : base(unitOfWork, mapper) {
         }

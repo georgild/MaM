@@ -20,8 +20,8 @@ namespace WebApi.Controllers {
 
         [HttpPost("")]
         public async Task<IActionResult> Post() {
-            ITasksWorkflowActor tasksWorkflow = _client.GetGrain<ITasksWorkflowActor>(Guid.Empty);
-            await tasksWorkflow.StartTaskChain(string.Empty);
+            ITasksProcessorActor tasksWorkflow = _client.GetGrain<ITasksProcessorActor>(Guid.Empty);
+            await tasksWorkflow.QualityCheck(@"D:\Pics\VIDEO0002.mp4");
 
             throw new NotImplementedException();
         }

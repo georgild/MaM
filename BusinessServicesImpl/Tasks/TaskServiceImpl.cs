@@ -12,7 +12,7 @@ namespace BusinessServicesImpl.Tasks {
     public class TaskServiceImpl : BaseEntityServiceImpl<TaskModel, TaskBizModel>, ITaskService {
 
         public TaskServiceImpl(
-                IBaseEntityUnitOfWork<TaskModel> unitOfWork,
+                ITaskUnitOfWork unitOfWork,
                 IMapper mapper)
                 : base(unitOfWork, mapper) {
         }

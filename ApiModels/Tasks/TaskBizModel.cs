@@ -10,13 +10,10 @@ namespace BizModels.Tasks {
 
         public DateTime EndedAt { get; set; }
 
-        [Required]
         public double Progress { get; set; }
 
-        [Required]
         public DateTime StartedAt { get; set; }
 
-        [Required]
         public ETaskState State { get; set; }
 
         [Required]
