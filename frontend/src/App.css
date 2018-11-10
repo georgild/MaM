@@ -1,0 +1,159 @@
+.App {
+  font-size: 0.92em;
+}
+
+/*.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}*/
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+/*@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/
+
+.App-data-container {
+  margin: 0 100px 0 100px;
+  /*text-align: left;*/
+}
+
+#login-panel {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  border: 2px;
+  border-style: solid;
+  border-color: #333;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+table {
+  border-spacing: 5px;
+}
+
+table, table td {
+  border: 1px solid #ddd;
+}
+
+table.routes-table {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+
+table.routes-table tr:nth-child(even) {
+  background-color: #fff;
+}
+table.routes-table tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+table.routes-table th {
+  background-color: #f9f9f9;
+}
+
+table.routes-table, table.routes-table th, table.routes-table td {
+  border-collapse: collapse;
+}
+
+table.routes-table th {
+  padding: 10px;
+}
+
+table.ticket-table td {
+  border: 1px solid;
+  width: 15px; 
+  height: 15px;
+}
+
+table.ticket-table td.selected {
+  background-color: green; 
+}
+
+table.ticket-table td.reserved {
+  background-color: red; 
+}
+
+form.filterForm {
+  margin: 10px;
+}
+
+.toolbar {
+  float: right;
+}
+
+form.filterForm label {
+  font-weight: 700;
+}
+
+input, button {
+  margin: 10px;
+  border-radius: 4px;
+}
+
+select {
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.grid-button {
+  margin: 1px;
+}
+
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.nav-bar li {
+  display: inline-block;
+}
+
+ul.nav-bar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.nav-bar li a.active {
+  background-color: #111;
+}
+
+ul.nav-bar li a:hover {
+  background-color: #111;
+}
+
+.react-grid-Row.react-grid-Row--odd .react-grid-Cell {
+  background-color: #eee;
+}

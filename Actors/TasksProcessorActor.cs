@@ -44,7 +44,7 @@ namespace Actors {
                     MetadataActorTask task = metadataTasksQueue.Dequeue();
 
                     Task.Run(() => {
-                        _metadataExtractor.DumpFlat(task.Source);
+                        Dictionary<string, string> mtd = _metadataExtractor.DumpFlat(task.Source);
                     });
                 }
                 if (qualityTasksQueue.Count > 0) {

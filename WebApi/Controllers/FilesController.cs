@@ -121,7 +121,7 @@ namespace WebApi.Controllers
                     .AddModelStateErrors(ModelState));
             }
 
-            VFileSystemItem file =  await _fileService.Get(_principal, id); // _mockData[0];//
+            VFileSystemItem file =   _mockData[0]; //await _fileService.Get(_principal, id); //
             string location = ConfigUtils.ConfigurationProvider
                     .GetDefaultConfig()
                     .GetSection("Storage").GetValue<string>("TranscoderLocation");
@@ -132,8 +132,8 @@ namespace WebApi.Controllers
 
             string transcoded = Path.Combine(location, file.Id.ToString());
 
-            bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
-
+            //bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
+            await tasksProcessor.ScheduleMetadata(file.Location);
             return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
         }
     }
