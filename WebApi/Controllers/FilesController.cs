@@ -115,7 +115,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("{id}/transcodertasks")]
-        public async Task<IActionResult> Post(Guid id, [FromBody] TranscoderTaskBizModel value) {
+        public async Task<IActionResult> PostTranscoder(Guid id, [FromBody] TranscoderTaskBizModel value) {
             if (!ModelState.IsValid) {
                 return BadRequest(new ErrorResponse()
                     .AddModelStateErrors(ModelState));
@@ -132,8 +132,47 @@ namespace WebApi.Controllers
 
             string transcoded = Path.Combine(location, file.Id.ToString());
 
+            bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
+
+            return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
+        }
+
+        [HttpPost("{id}/metadatatasks")]
+        public async Task<IActionResult> PostMetadata(Guid id, [FromBody] MetadataTaskBizModel value) {
+            if (!ModelState.IsValid) {
+                return BadRequest(new ErrorResponse()
+                    .AddModelStateErrors(ModelState));
+            }
+
+            VFileSystemItem file = _mockData[0]; //await _fileService.Get(_principal, id); //
+
+            //value.Id = await _taskService.Create(_principal,
+            //        _mapper.Map<TaskModel>(value), id);
+
+            ITasksProcessorActor tasksProcessor = _orleansClient.GetGrain<ITasksProcessorActor>(Guid.Empty);
+
             //bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
             await tasksProcessor.ScheduleMetadata(file.Location);
+            return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
+        }
+
+        [HttpPost("{id}/qualitytasks")]
+        public async Task<IActionResult> PostQC(Guid id, [FromBody] MetadataTaskBizModel value) {
+            if (!ModelState.IsValid) {
+                return BadRequest(new ErrorResponse()
+                    .AddModelStateErrors(ModelState));
+            }
+
+            VFileSystemItem file = _mockData[0]; //await _fileService.Get(_principal, id); //
+
+            //value.Id = await _taskService.Create(_principal,
+            //        _mapper.Map<TaskModel>(value), id);
+
+            ITasksProcessorActor tasksProcessor = _orleansClient.GetGrain<ITasksProcessorActor>(Guid.Empty);
+
+            //bool succeeded = await tasksProcessor.ScheduleTranscode(file.Location, transcoded + "." + value.Format, value.Format);
+            await tasksProcessor.ScheduleQualityControl(file.Location);
+
             return CreatedAtAction(nameof(GetFileById), new { id = value.Id }, value);
         }
     }

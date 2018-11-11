@@ -77,3 +77,7 @@ ul.nav-bar li a:hover {
 .react-grid-Row.react-grid-Row--odd .react-grid-Cell {
   background-color: #eee;
 }
+
+a.thumbnail {
+  background-color: #ddd;
+}

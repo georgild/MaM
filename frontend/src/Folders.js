@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import {PropTypes} from 'prop-types';
 
-import {Grid, Row, Col, Thumbnail, Tabs, Tab, Table, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap'
+import {Grid, Row, Col, Thumbnail, Tabs, Tab, Table, FormGroup, ControlLabel, FormControl, HelpBlock, Button} from 'react-bootstrap'
 
 import Tree, { TreeNode } from 'rc-tree';
 import 'rc-tree/assets/index.css';
@@ -207,7 +207,34 @@ class Folders extends React.Component {
                                         </Table>
                                     </Tab>
                                     <Tab eventKey={2} title="Transcoding">
-                      
+                                        <Button bsStyle="primary">New task</Button>
+                                        <Table striped bordered condensed hover>
+                                            <thead>
+                                                <tr>
+                                                <th>Created At</th>
+                                                <th>Started At</th>
+                                                <th>Format</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2018-05-20T07:30:20Z</td>
+                                                    <td>2018-05-20T07:30:20Z</td>
+                                                    <td>avi</td>
+                                                    <td>Success</td>
+                                                    <td><Button bsStyle="info">Info</Button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2018-05-20T07:30:20Z</td>
+                                                    <td>2018-05-20T07:30:20Z</td>
+                                                    <td>mp4</td>
+                                                    <td>Success</td>
+                                                    <td><Button bsStyle="info">Info</Button></td>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
                                     </Tab>
                                     <Tab eventKey={3} title="Quality Control">
                                         Tab 2 content
