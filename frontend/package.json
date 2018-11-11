@@ -5,10 +5,10 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "rc-tree": "^1.14.8",
-    "react": "^15.5.4",
+    "react": "^16.6.1",
     "react-bootstrap": "^0.32.4",
     "react-data-grid": "^2.0.41",
-    "react-dom": "^15.5.4",
+    "react-dom": "^16.6.1",
     "react-modal": "^3.6.1",
     "react-router-dom": "^4.3.1"
   },

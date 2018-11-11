@@ -24,10 +24,13 @@
 }*/
 
 .App-data-container {
-  margin: 0 100px 0 100px;
+  margin: 20px;
   /*text-align: left;*/
 }
 
+td {
+  padding: 20px;
+}
 #login-panel {
   position: absolute;
   width: 300px;
@@ -41,89 +44,6 @@
   border-color: #333;
   padding: 10px;
   border-radius: 4px;
-}
-
-table {
-  border-spacing: 5px;
-}
-
-table, table td {
-  border: 1px solid #ddd;
-}
-
-table.routes-table {
-  width: 100%;
-  background-color: #f1f1c1;
-}
-
-table.routes-table tr:nth-child(even) {
-  background-color: #fff;
-}
-table.routes-table tr:nth-child(odd) {
-  background-color: #eee;
-}
-
-table.routes-table th {
-  background-color: #f9f9f9;
-}
-
-table.routes-table, table.routes-table th, table.routes-table td {
-  border-collapse: collapse;
-}
-
-table.routes-table th {
-  padding: 10px;
-}
-
-table.ticket-table td {
-  border: 1px solid;
-  width: 15px; 
-  height: 15px;
-}
-
-table.ticket-table td.selected {
-  background-color: green; 
-}
-
-table.ticket-table td.reserved {
-  background-color: red; 
-}
-
-form.filterForm {
-  margin: 10px;
-}
-
-.toolbar {
-  float: right;
-}
-
-form.filterForm label {
-  font-weight: 700;
-}
-
-input, button {
-  margin: 10px;
-  border-radius: 4px;
-}
-
-select {
-  margin: 10px;
-  border-radius: 4px;
-}
-
-.button {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.grid-button {
-  margin: 1px;
 }
 
 ul.nav-bar {

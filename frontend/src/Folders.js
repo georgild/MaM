@@ -2,20 +2,16 @@ import React from 'react';
 import $ from 'jquery';
 import {PropTypes} from 'prop-types';
 
-import {Grid, Row, Col, Thumbnail, Tabs, Tab, Table} from 'react-bootstrap'
+import {Grid, Row, Col, Thumbnail, Tabs, Tab, Table, FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap'
 
 import Tree, { TreeNode } from 'rc-tree';
 import 'rc-tree/assets/index.css';
-
-import styled from 'styled-components';
-
-import ReactDataGrid from 'react-data-grid';
-import FilterForm from './FilterForm';
 
 class Folders extends React.Component {
 
     constructor(props) {
         super(props);
+        this.onToggle = this.onToggle.bind(this);
         this.state = { 
             data: [], 
             filters : [],
@@ -32,22 +28,15 @@ class Folders extends React.Component {
                 thumbWidth: 111
               }],
             treeData: [
-                { key: '0-0', title: 'parent 1', children:
-                  [
-                    { key: '0-0-0', title: 'parent 1-1', children:
-                      [
-                        { key: '0-0-0-0', title: 'parent 1-1-0' },
-                      ],
+                { key: '0-0', title: 'My Organization', children:
+                [
+                    { key: '0-0-0', title: 'Movies', children: [], isLeaf: false
                     },
-                    { key: '0-0-1', title: 'parent 1-2', children:
-                        [
-                          { key: '0-0-1-0', title: 'parent 1-2-0', disableCheckbox: true },
-                          { key: '0-0-1-1', title: 'parent 1-2-1' },
-                        ],
+                    { key: '0-0-1', title: 'Pictures', children: [], isLeaf: false
                     },
-                  ],
+                ],
                 },
-              ]
+            ]
         };
     }
 
@@ -112,89 +101,129 @@ class Folders extends React.Component {
         //setInterval(this.loadArrivals, this.props.pollInterval);
         // <FilterForm onFilterSubmit={this.handleFiltersSubmit}/>
     }
-
+    onToggle(node, toggled){
+        if(this.state.cursor){this.state.cursor.active = false;}
+        node.active = true;
+        if(node.children){ node.toggled = toggled; }
+        this.setState({ cursor: node });
+    }
+   /*<form>
+    <FormGroup
+    //controlId="formBasicText"
+    //validationState={this.getValidationState()}
+    >
+    <ControlLabel>Search</ControlLabel>
+    <FormControl
+        type="text"
+        value={this.state.value}
+        placeholder="Enter text"
+        onChange={this.handleChange}
+    />
+    <FormControl.Feedback />
+    </FormGroup>
+</form>*/
     render() {
         return (
-            <span>
-                
-                <Tree
-                    defaultExpandAll={true}
-                    defaultExpandedKeys={['p1']}
-                    //openAnimation={animation}
-                    treeData={this.state.treeData}
-                >
-                </Tree>
-                
-                <Grid>
-                <Row>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                  <Col xs={6} md={3}>
-                    <Thumbnail href="#" alt="171x180" src="/favicon.ico" />
-                    <p>Asset 1</p>
-                  </Col>
-                </Row>
-              </Grid>;
-              <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
-                <Tab eventKey={1} title="Metadata">
-                    <Table striped bordered condensed hover>
+            <div>
+    
+                 <Table striped bordered condensed hover responsive>
                     <thead>
                         <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                            <th>Folders</th>
+                            <th>Assets</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <td>3</td>
-                        <td colSpan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                            <td>
+                                <Tree
+                                    defaultExpandAll={true}
+                                    defaultExpandedKeys={['p1']}
+                                    //openAnimation={animation}
+                                    treeData={this.state.treeData}
+                                >
+                                </Tree>
+                            </td>
+                            <td>
+                            
+                                <Grid>
+                                        <Row>
+                                            <Col xs={3} md={2}>
+                                                <Thumbnail href="#" alt="171x180" src="pics/avengers.png" >
+                                                    <p>Avengers</p>
+                                                </Thumbnail>
+                                            </Col>
+                                            <Col xs={3} md={2}>
+                                                <Thumbnail href="#" alt="171x180" src="pics/first_blood.jpg" >
+                                                    <p>First Blood</p>
+                                                </Thumbnail>
+                                            </Col>
+                                            <Col xs={3} md={2}>
+                                                <Thumbnail href="#" alt="171x180" src="pics/the_lord.jpg" >
+                                                    <p>LOTR</p>
+                                                </Thumbnail>
+                                            </Col>
+                     
+                                            <Col xs={3} md={2}>
+                                                <Thumbnail href="#" alt="171x180" src="pics/venom.jpg" >
+                                                    <p>Venom</p>
+                                                </Thumbnail>
+                                            </Col>
+                                            <Col xs={3} md={2}>
+                                                <Thumbnail href="#" alt="171x180" src="pics/spider_man.jpg" >
+                                                    <p>Spider Man</p>
+                                                </Thumbnail>
+                                            </Col>
+                                        </Row>
+
+                                </Grid>
+                                <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                                    <Tab eventKey={1} title="Metadata">
+                                        <Table striped bordered condensed hover>
+                                            <thead>
+                                                <tr>
+                                                <th>Name</th>
+                                                <th>Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>xmp:CreateDate</td>
+                                                    <td>2016-05-20T07:30:20Z</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>xmp:ModifyDate</td>
+                                                    <td>2016-05-20T07:30:20Z</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>xmpDM:duration/xmpDM:value</td>
+                                                    <td>33753</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>xmpDM:duration/xmpDM:scale</td>
+                                                    <td>1/1000</td>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
+                                    </Tab>
+                                    <Tab eventKey={2} title="Transcoding">
+                      
+                                    </Tab>
+                                    <Tab eventKey={3} title="Quality Control">
+                                        Tab 2 content
+                                    </Tab>
+                                    <Tab eventKey={4} title="Analytics">
+                                        Tab 3 content
+                                    </Tab>
+                                    <Tab eventKey={5} title="Files">
+                                        Tab 3 content
+                                    </Tab>
+                                </Tabs>;
+                            </td>
+                    </tr>
                     </tbody>
-                    </Table>;
-                </Tab>
-                <Tab eventKey={2} title="Tasks">
-                    Tab 2 content
-                </Tab>
-                <Tab eventKey={3} title="Analytics">
-                    Tab 3 content
-                </Tab>
-            </Tabs>;
-            </span>
+                </Table>
+            </div>
         );
     }
 }

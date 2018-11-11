@@ -29,8 +29,8 @@ class NavBar extends React.Component {
     render() {
         return (
             <ul className="nav-bar">
-                <li><a href="#" className={this.state.activeComponent === 0 ? 'active' : ''} onClick={this.handleArrivalsClick}>Assets</a></li>
-                <li><a href="#" className={this.state.activeComponent === 1 ? 'active' : ''} onClick={this.handleDeparturesClick}>Departures</a></li>
+                <li><a href="#" className={this.state.activeComponent === 0 ? 'active' : ''} onClick={this.handleArrivalsClick}>Media</a></li>
+                <li><a href="#" className={this.state.activeComponent === 1 ? 'active' : ''} onClick={this.handleDeparturesClick}>Task Monitoring</a></li>
             </ul>
         );
     }
